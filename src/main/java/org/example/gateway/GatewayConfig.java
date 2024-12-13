@@ -13,7 +13,7 @@ public class GatewayConfig {
         return (exchange, chain) -> {
             // Add a delay for requests to "/delayed-service"
             if (exchange.getRequest().getPath().toString().contains("/delayed-service")) {
-                return Mono.delay(Duration.ofSeconds(3)) // Add a 3-second delay
+                return Mono.delay(Duration.ofSeconds(2)) // Add a 3-second delay
                         .then(chain.filter(exchange));
             }
             return chain.filter(exchange);
